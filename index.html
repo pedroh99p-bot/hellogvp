@@ -157,14 +157,18 @@
             window.location.href = destinoURL;
         }
 
-        function triggerMetaCtaClick(destinoURL, buttonText) {
+        function triggerMetaLeadEvent(destinoURL, buttonText, onComplete) {
             if (typeof fbq !== 'function') {
+                onComplete();
                 return;
             }
 
-            fbq('trackCustom', 'PresselCTA_Click', {
+            fbq('track', 'Lead', {
+                content_name: 'Pressel CTA',
+                content_category: 'pressel',
                 button_text: buttonText,
-                button_href: destinoURL
+                destination_url: destinoURL,
+                event_callback: onComplete
             });
         }
 
@@ -180,6 +184,16 @@
             const linkElement = event.currentTarget;
             const destinoURL = linkElement.href;
             const buttonText = linkElement.textContent.replace(/\s+/g, ' ').trim();
+            let hasRedirected = false;
+
+            function completeRedirect() {
+                if (hasRedirected) {
+                    return;
+                }
+
+                hasRedirected = true;
+                redirectToDestination(destinoURL);
+            }
 
             if (typeof ttq !== 'undefined') {
                 ttq.track('ClickButton', {
@@ -189,12 +203,13 @@
             }
 
             try {
-                triggerMetaCtaClick(destinoURL, buttonText);
-            } catch (error) {}
+                triggerMetaLeadEvent(destinoURL, buttonText, completeRedirect);
+            } catch (error) {
+                completeRedirect();
+                return;
+            }
 
-            setTimeout(function() {
-                redirectToDestination(destinoURL);
-            }, redirectDelayMs);
+            setTimeout(completeRedirect, redirectDelayMs);
         }
     </script>
 </body>
