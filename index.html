@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso VIP Liberado</title>
-    
-    <!-- Tailwind CSS (CDN para alta performance e praticidade) -->
+    <link rel="icon" href="data:,">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configurações Customizadas do Tailwind -->
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        telegram: '#2AABEE', // Cor Oficial Premium do Telegram
+                        telegram: '#2AABEE',
                         telegramDark: '#2288BD'
                     },
                     fontFamily: {
@@ -27,11 +26,11 @@
                     },
                     keyframes: {
                         'pulse-glow': {
-                            '0%, 100%': { 
+                            '0%, 100%': {
                                 opacity: '1',
                                 boxShadow: '0 0 15px 0px rgba(42, 171, 238, 0.5)'
                             },
-                            '50%': { 
+                            '50%': {
                                 opacity: '.9',
                                 boxShadow: '0 0 25px 5px rgba(42, 171, 238, 0.7)'
                             },
@@ -47,14 +46,9 @@
                     }
                 }
             }
-        }
+        };
     </script>
 
-    <!-- ========================================== -->
-    <!-- INFRAESTRUTURA DE TRACKING (PIXELS)        -->
-    <!-- ========================================== -->
-    
-    <!-- 1. Sharkbot Pixel Code (Carregando Primeiro) -->
     <script>
     (function() {
       var u = new URLSearchParams(window.location.search);
@@ -76,7 +70,7 @@
       }
       function attach() {
         document.querySelectorAll('a.button, a.cta, a[href*="/l/"], a[href*="/c/"], a[href*="/b/"]').forEach(function(btn){
-          btn.addEventListener('click', function(e){
+          btn.addEventListener('click', function() {
             try { btn.href = buildLink(btn.href); } catch(err) {}
           }, { once: false, capture: true });
         });
@@ -89,54 +83,58 @@
     })();
     </script>
 
-    <!-- TikTok Pixel Code Start -->
     <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
     var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
-
       ttq.load('D8GV803C77U2SBB674CG');
       ttq.page();
     }(window, document, 'ttq');
     </script>
-    <!-- TikTok Pixel Code End -->
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2006897639931871');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
 </head>
 <body class="bg-black text-white antialiased h-screen w-full flex flex-col justify-center items-center relative overflow-hidden selection:bg-telegram selection:text-white">
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2006897639931871&ev=PageView&noscript=1"
+    /></noscript>
 
-    <!-- Helper Notice (Solução para o navegador do TikTok Ads) -->
     <div class="absolute top-3 right-4 z-50 flex flex-col items-end opacity-0 animate-popup pointer-events-none">
-        
-        <!-- Seta Vermelha Animada apontando para a quina superior direita -->
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-red-500 animate-bounce-subtle drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] -mr-2 mb-1">
             <path d="M14 5L20 5L20 11" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M20 5L10 15C7.79086 17.2091 4.20914 17.2091 2 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
 
-        <!-- Caixinha de Diálogo com estilo "balão" -->
         <div class="bg-gray-900 border border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.25)] rounded-2xl rounded-tr-sm p-3 max-w-[220px] text-right relative backdrop-blur-sm">
             <p class="text-xs text-gray-300 font-medium leading-relaxed">
-                O botão não funciona?<br>
-                Toque nos <span class="font-bold text-red-500 text-sm">⋮</span> acima e escolha<br>
+                O bot&atilde;o n&atilde;o funciona?<br>
+                Toque nos <span class="font-bold text-red-500 text-sm">&#8942;</span> acima e escolha<br>
                 <span class="font-bold text-white">"Abrir no navegador"</span>
             </p>
         </div>
     </div>
 
-    <!-- Background sutil para focar a atenção no meio -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-black to-black opacity-50"></div>
 
-    <!-- Container Principal (CTA) -->
     <main class="relative z-20 w-full px-6 flex flex-col items-center justify-center">
-        
-        <!-- Botão CTA (Classe "cta" adicionada para o Sharkbot reconhecer) -->
-        <a href="https://t.me/AC3SS0VIP01BOT" 
+        <a href="https://t.me/AC3SS0VIP01BOT"
            onclick="handleRedirect(event)"
            class="cta group relative flex items-center justify-center gap-3 w-full max-w-sm bg-telegram hover:bg-telegramDark text-white font-bold text-lg sm:text-xl py-5 px-8 rounded-2xl shadow-lg transition-all duration-300 transform active:scale-95 animate-pulse-glow">
-            
-            <!-- Ícone Oficial do Telegram (SVG Leve e Nativo) -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8 fill-current drop-shadow-md" viewBox="0 0 24 24">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.94z"/>
             </svg>
@@ -146,38 +144,57 @@
             </span>
         </a>
 
-        <!-- Gatilho de Escassez/Segurança sutil opcional abaixo do botão -->
         <p class="mt-4 text-xs text-gray-500 font-medium tracking-wider uppercase opacity-60">
             Acesso 100% Gratuito e Seguro
         </p>
-
     </main>
 
-    <!-- ========================================== -->
-    <!-- LÓGICA DE DISPARO DE EVENTOS E REDIRECIONAMENTO -->
-    <!-- ========================================== -->
     <script>
-        function handleRedirect(event) {
-            // Previne o clique imediato para garantir que os pixels disparem primeiro
-            event.preventDefault(); 
-            
-            // Pega o link atualizado do botão (agora com as UTMs embutidas pelo Sharkbot)
-            const linkElement = event.currentTarget;
-            const destinoURL = linkElement.href; 
+        let isRedirecting = false;
+        const redirectDelayMs = 300;
 
-            // 1. Dispara o evento de Conversão/Clique no TikTok Pixel
+        function redirectToDestination(destinoURL) {
+            window.location.href = destinoURL;
+        }
+
+        function triggerMetaCtaClick(destinoURL, buttonText) {
+            if (typeof fbq !== 'function') {
+                return;
+            }
+
+            fbq('trackCustom', 'PresselCTA_Click', {
+                button_text: buttonText,
+                button_href: destinoURL
+            });
+        }
+
+        function handleRedirect(event) {
+            if (isRedirecting) {
+                event.preventDefault();
+                return;
+            }
+
+            event.preventDefault();
+            isRedirecting = true;
+
+            const linkElement = event.currentTarget;
+            const destinoURL = linkElement.href;
+            const buttonText = linkElement.textContent.replace(/\s+/g, ' ').trim();
+
             if (typeof ttq !== 'undefined') {
-                // Você pode alterar 'ClickButton' para um evento padrão como 'ViewContent' se preferir otimizar campanhas para isso.
                 ttq.track('ClickButton', {
                     content_name: 'Entrar_Telegram',
                     content_category: 'Precel_Redirect'
                 });
             }
 
-            // 2. Aguarda 300 milissegundos para garantir a leitura dos Pixels antes de sair da página
-            setTimeout(() => {
-                window.location.href = destinoURL;
-            }, 300);
+            try {
+                triggerMetaCtaClick(destinoURL, buttonText);
+            } catch (error) {}
+
+            setTimeout(function() {
+                redirectToDestination(destinoURL);
+            }, redirectDelayMs);
         }
     </script>
 </body>
