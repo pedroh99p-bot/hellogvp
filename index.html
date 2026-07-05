@@ -50,40 +50,6 @@
     </script>
 
     <script>
-    (function() {
-      var u = new URLSearchParams(window.location.search);
-      var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','fbclid','ttclid','click_id','_fbp','gclid','xcod','sck','cv','salesCode'];
-      var captured = {};
-      KEYS.forEach(function(k){ var v = u.get(k); if (v) captured[k] = v; });
-      try {
-        var saved = JSON.parse(sessionStorage.getItem('shark_utms') || '{}');
-        Object.keys(captured).forEach(function(k){ saved[k] = captured[k]; });
-        sessionStorage.setItem('shark_utms', JSON.stringify(saved));
-        captured = saved;
-      } catch(e) {}
-      function buildLink(originalHref) {
-        var url = new URL(originalHref, location.origin);
-        Object.keys(captured).forEach(function(k){
-          if (!url.searchParams.has(k)) url.searchParams.set(k, captured[k]);
-        });
-        return url.toString();
-      }
-      function attach() {
-        document.querySelectorAll('a.button, a.cta, a[href*="/l/"], a[href*="/c/"], a[href*="/b/"]').forEach(function(btn){
-          btn.addEventListener('click', function() {
-            try { btn.href = buildLink(btn.href); } catch(err) {}
-          }, { once: false, capture: true });
-        });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', attach);
-      } else {
-        attach();
-      }
-    })();
-    </script>
-
-    <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
     var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
@@ -197,7 +163,7 @@
 
             if (typeof ttq !== 'undefined') {
                 ttq.track('ClickButton', {
-                    content_name: 'Entrar_Telegram',
+                    content_name: 'Entrar_SharkBot',
                     content_category: 'Precel_Redirect'
                 });
             }
@@ -211,6 +177,39 @@
 
             setTimeout(completeRedirect, redirectDelayMs);
         }
+    </script>
+    <script>
+    (function() {
+      var u = new URLSearchParams(window.location.search);
+      var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','fbclid','ttclid','click_id','_fbp','gclid','xcod','sck','cv','salesCode'];
+      var captured = {};
+      KEYS.forEach(function(k){ var v = u.get(k); if (v) captured[k] = v; });
+      try {
+        var saved = JSON.parse(sessionStorage.getItem('shark_utms') || '{}');
+        Object.keys(captured).forEach(function(k){ saved[k] = captured[k]; });
+        sessionStorage.setItem('shark_utms', JSON.stringify(saved));
+        captured = saved;
+      } catch(e) {}
+      function buildLink(originalHref) {
+        var url = new URL(originalHref, location.origin);
+        Object.keys(captured).forEach(function(k){
+          if (!url.searchParams.has(k)) url.searchParams.set(k, captured[k]);
+        });
+        return url.toString();
+      }
+      function attach() {
+        document.querySelectorAll('a.button, a.cta, a[href*="/l/"], a[href*="/c/"], a[href*="/b/"]').forEach(function(btn){
+          btn.addEventListener('click', function(e){
+            try { btn.href = buildLink(btn.href); } catch(err) {}
+          }, { once: false, capture: true });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attach);
+      } else {
+        attach();
+      }
+    })();
     </script>
 </body>
 </html>
